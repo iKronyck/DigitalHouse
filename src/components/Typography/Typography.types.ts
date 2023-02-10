@@ -20,4 +20,5 @@ export type TTypography = {
   fontSize?: number;
   lineHeight?: number;
   textAlign?: 'auto' | 'left' | 'right' | 'center' | 'justify' | undefined;
+  textTransform?: 'none' | 'capitalize' | 'uppercase' | 'lowercase' | undefined;
 };

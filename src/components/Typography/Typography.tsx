@@ -10,10 +10,14 @@ export const Typography = ({
   fontSize = 12,
   fontWeight = 'normal',
   lineHeight = 16,
-  textAlign = 'left'
+  textAlign = 'left',
+  textTransform = 'none',
 }: TTypography) => (
   <Text
-    style={[styles.text, {color, fontSize, fontWeight, lineHeight, textAlign}]}
+    style={[
+      styles.text,
+      {color, fontSize, fontWeight, lineHeight, textAlign, textTransform},
+    ]}
     numberOfLines={1}>
     {children}
   </Text>
