@@ -19,4 +19,5 @@ export type TTypography = {
   fontWeight?: TFontWeight;
   fontSize?: number;
   lineHeight?: number;
+  textAlign?: 'auto' | 'left' | 'right' | 'center' | 'justify' | undefined;
 };
