@@ -29,11 +29,11 @@ export const ProductItem = ({
     </View>
     <View style={styles.productQuantityContent}>
       <Typography
-        color={isRedemption ? COLORS.GREEN : COLORS.RED}
+        color={isRedemption ? COLORS.RED : COLORS.GREEN}
         fontSize={14}
         lineHeight={19}
         fontWeight="800">
-        {isRedemption ? '+' : '-'}
+        {isRedemption ? '-' : '+'}
       </Typography>
       <Typography fontSize={14} lineHeight={19} fontWeight="800">
         {formatQuantityWithoutDecimals(points)}
