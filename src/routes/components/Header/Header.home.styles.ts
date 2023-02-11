@@ -1,9 +1,11 @@
 import {StyleSheet} from 'react-native';
+import { COLORS } from '../../../assets/colors';
 
 export default StyleSheet.create({
   container: {
-    marginHorizontal: 20,
-    marginBottom: 18,
-    marginTop: 18,
+    paddingHorizontal: 20,
+    paddingBottom: 18,
+    paddingTop: 18,
+    backgroundColor: COLORS.BACKGROUND,
   },
 });
