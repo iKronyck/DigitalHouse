@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import {COLORS} from '../../../../assets/colors';
 
 export default StyleSheet.create({
@@ -18,7 +18,8 @@ export default StyleSheet.create({
     },
     shadowOpacity: 0.36,
     shadowRadius: 6.68,
-    
-    elevation: 11,
+    ...Platform.select({
+      android: {elevation: 11},
+    }),
   },
 });
