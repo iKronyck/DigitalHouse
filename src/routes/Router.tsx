@@ -1,8 +1,7 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {ERouterRoutes, TRouterStack} from './models/router.model';
-import {HomeScreen, MotionDetailScreen} from '../screens';
-import {HeaderHome, HeaderProductDetail} from './components';
+import {HomeScreen, ProductDetailScreen} from '../screens';
 
 const AppStack = createNativeStackNavigator<TRouterStack>();
 
@@ -11,12 +10,12 @@ export const AppRouter = () => (
     <AppStack.Screen
       name={ERouterRoutes.HOME_SCREEN}
       component={HomeScreen}
-      options={{header: HeaderHome}}
+      options={{headerShown: false}}
     />
     <AppStack.Screen
       name={ERouterRoutes.MOTION_DETAIL_SCREEN}
-      component={MotionDetailScreen}
-      options={{header: () => <HeaderProductDetail />}}
+      component={ProductDetailScreen}
+      options={{headerShown: false}}
     />
   </AppStack.Navigator>
 );
