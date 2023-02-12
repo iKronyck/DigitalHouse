@@ -1,12 +1,10 @@
 import React from 'react';
-import {View, Image, Pressable} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import {View, Pressable, Image} from 'react-native';
 import {Typography} from '../../../../components';
 import {formatDate} from '../../../../utilities';
 import {COLORS} from '../../../../assets/colors';
-import {TProductItem, StackNavigation} from './ProductItem.types';
+import {TProductItem} from './ProductItem.types';
 import {formatQuantityWithoutDecimals} from '../../../../adapters';
-import {ERouterRoutes} from '../../../../routes/models/router.model';
 import styles from './ProductItem.styles';
 
 import ArrowIcon from '../../../../assets/icons/arrow.png';
@@ -17,8 +15,8 @@ export const ProductItem = ({
   date,
   points,
   isRedemption,
+  goToProductDetail,
 }: TProductItem) => {
-  const navigation = useNavigation<StackNavigation>();
   const product = {
     product: name,
     createdAt: date,
@@ -28,10 +26,9 @@ export const ProductItem = ({
   };
   return (
     <Pressable
+      testID={'product-item'}
       style={styles.container}
-      onPress={() =>
-        navigation.navigate(ERouterRoutes.MOTION_DETAIL_SCREEN, {product})
-      }>
+      onPress={() => goToProductDetail(product)}>
       <View>
         <Image style={styles.productImage} source={{uri: image}} />
       </View>

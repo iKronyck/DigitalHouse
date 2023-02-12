@@ -5,9 +5,12 @@ import {Typography} from '../../components';
 import {COLORS} from '../../assets/colors';
 import {getCurrentMonth} from '../../utilities';
 import {AllButton, PointsCard, ProductsContainer, Header} from './components';
+import {THomeScreen} from './HomeScreen.types';
+import {ERouterRoutes} from '../../routes/models/router.model';
+import {TProduct} from '../../models/product.model';
 import styles from './HomeScreen.styles';
 
-export const HomeScreen = () => {
+export const HomeScreen = ({navigation}: THomeScreen) => {
   const {
     products,
     totalPoints,
@@ -18,6 +21,10 @@ export const HomeScreen = () => {
     showRedemptionProducts,
   } = useProducts();
   const currentMonth = getCurrentMonth();
+
+  const goToProductDetail = (product: TProduct) =>
+    navigation.navigate(ERouterRoutes.MOTION_DETAIL_SCREEN, {product});
+
   return (
     <>
       <Header />
@@ -50,6 +57,7 @@ export const HomeScreen = () => {
             <ProductsContainer
               testID="products-container"
               products={products}
+              goToProductDetail={goToProductDetail}
             />
             <View style={styles.buttonsContainer}>
               {showAll ? (

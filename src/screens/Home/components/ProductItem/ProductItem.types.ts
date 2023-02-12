@@ -1,13 +1,4 @@
-import {NavigationProp} from '@react-navigation/native';
-import {
-  ERouterRoutes,
-  TRouterStack,
-} from '../../../../routes/models/router.model';
-
-export type StackNavigation = NavigationProp<
-  TRouterStack,
-  ERouterRoutes.MOTION_DETAIL_SCREEN
->;
+import {TProduct} from '../../../../models/product.model';
 
 export type TProductItem = {
   image: string;
@@ -15,4 +6,5 @@ export type TProductItem = {
   date: string;
   points: number;
   isRedemption: boolean;
+  goToProductDetail: (product: TProduct) => void;
 };
