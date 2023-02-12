@@ -10,3 +10,15 @@ export const getPointsNumber = (products: TProducts[]) => {
   }
   return '0';
 };
+
+export const getWinPoints = (products: TProducts[]) => {
+  if (products && products.length > 0)
+    return products.filter(product => !product.is_redemption);
+  return [];
+};
+
+export const getRedemptionPoints = (products: TProducts[]) => {
+  if (products && products.length > 0)
+    return products.filter(product => product.is_redemption);
+  return [];
+};
