@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
-import {getProducts} from '../../../services';
-import {getPointsNumber} from '../adapters';
+import {getProducts, getProductsWithAPIError} from '../../../services';
+import {getPointsNumber, getRedemptionPoints, getWinPoints} from '../adapters';
 import {TProducts} from '../../../models/product.model';
 
 export const useProducts = () => {
@@ -9,15 +9,31 @@ export const useProducts = () => {
   const [totalPoints, setTotalPoints] = useState('0');
   const [loading, setLoading] = useState(true);
   const [showAll, setShowAll] = useState(false);
+  const [error, setError] = useState<unknown>();
+
+  const getAllProductWithError = () => {
+    setLoading(true);
+    getProductsWithAPIError<TProducts[]>()
+      .then(() => {
+        setError('Error');
+        setLoading(false);
+        setShowAll(false);
+        setProducts([]);
+        setTotalPoints('0')
+      })
+      .catch(() => null);
+  };
 
   const getAllProducts = async () => {
     try {
+      setLoading(true);
       const response = await getProducts<TProducts[]>();
       if (response) {
         setLocalProducts(response.data);
-        setProducts(response.data.filter(product => !product.is_redemption));
+        setProducts(getWinPoints(response.data));
         const points = getPointsNumber(response.data);
         setTotalPoints(points);
+        setError(undefined);
       }
     } catch (error) {
       console.error(error);
@@ -29,29 +45,36 @@ export const useProducts = () => {
   const showAllProducts = () => {
     setProducts(localProducts);
     setShowAll(true);
-  }
+  };
 
   const showWinProducts = () => {
-    setProducts(localProducts.filter(product => !product.is_redemption));
+    setProducts(getWinPoints(localProducts));
     setShowAll(false);
-  }
+  };
 
   const showRedemptionProducts = () => {
-    setProducts(localProducts.filter(product => product.is_redemption));
+    setProducts(getRedemptionPoints(localProducts));
     setShowAll(false);
-  }
+  };
+
+  const tryToGetData = () => {
+    void getAllProducts();
+  };
 
   useEffect(() => {
     void getAllProducts();
   }, []);
 
   return {
+    error,
     loading,
     showAll,
     products,
     totalPoints,
     showAllProducts,
     showWinProducts,
-    showRedemptionProducts
+    showRedemptionProducts,
+    getAllProductWithError,
+    resetError: tryToGetData,
   };
 };
