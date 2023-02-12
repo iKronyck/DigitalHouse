@@ -21,7 +21,7 @@ export const ProductDetailScreen = ({
       <View style={styles.container}>
         <ScrollView style={styles.content}>
           <View style={styles.productImageContainer}>
-            <Image style={styles.productImage} source={{uri: product.image}} />
+            <Image testID='product-image' style={styles.productImage} source={{uri: product.image}} />
           </View>
           <Typography
             fontSize={14}
