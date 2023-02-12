@@ -10,13 +10,22 @@ import {useProducts} from './hooks';
 import {TProducts} from '../../models/product.model';
 import {getPointsNumber} from './adapters';
 import {formatQuantityWithDecimals} from '../../adapters';
+import {THomeScreen} from './HomeScreen.types';
 
 let component: RenderResult;
+const navigation: unknown = {
+  goBack: jest.fn(),
+};
+
+const route: unknown = {
+  params: {},
+};
 
 jest.mock('./hooks/useProducts');
 jest.mock('@react-navigation/native');
 
 const useProductsMock = useProducts as jest.Mock;
+const props = {navigation, route} as THomeScreen;
 
 const products: TProducts[] = [
   {
@@ -57,7 +66,7 @@ describe('Home screen', () => {
       showRedemptionProducts: jest.fn(),
     };
     useProductsMock.mockImplementation(() => data);
-    component = render(<HomeScreen />);
+    component = render(<HomeScreen {...props} />);
   });
 
   it('Renders correctly', () => {
@@ -76,10 +85,10 @@ describe('Home screen', () => {
         showRedemptionProducts: jest.fn(),
       };
       useProductsMock.mockImplementation(() => data);
-      component = render(<HomeScreen />);
+      component = render(<HomeScreen {...props} />);
     });
 
-    it('Should show loading component when is loading products', () => {
+    it('Should display loading component when is loading products', () => {
       const loader = component.getByTestId('home-screen-loading');
       expect(loader).toBeDefined();
     });
@@ -98,15 +107,15 @@ describe('Home screen', () => {
         showRedemptionProducts: jest.fn(),
       };
       useProductsMock.mockImplementation(() => data);
-      component = render(<HomeScreen />);
+      component = render(<HomeScreen {...props} />);
     });
 
-    it('Should show the number of points that are redemption', () => {
+    it('Should display the number of points that are redemption', () => {
       const points = `${getPointsNumber(products)} pts`;
       expect(points).toEqual(`${formatQuantityWithDecimals(5)} pts`);
     });
 
-    it('Should show list of products', () => {
+    it('Should display the list of products', () => {
       const productList = component.getByTestId('products-container');
       expect(productList).toBeDefined();
     });
