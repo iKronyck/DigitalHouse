@@ -4,9 +4,9 @@ import {ProductItem} from '../ProductItem';
 import {TProductsContainer} from './ProductsContainer.types';
 import styles from './ProductsContainer.styles';
 
-export const ProductsContainer = ({products}: TProductsContainer) => {
+export const ProductsContainer = ({goToProductDetail, products, testID}: TProductsContainer) => {
   return (
-    <View style={styles.content}>
+    <View testID={testID} style={styles.content}>
       <FlatList
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.container}
@@ -18,6 +18,7 @@ export const ProductsContainer = ({products}: TProductsContainer) => {
             date={item.createdAt}
             isRedemption={item.is_redemption}
             points={item.points}
+            goToProductDetail={goToProductDetail}
           />
         )}
       />

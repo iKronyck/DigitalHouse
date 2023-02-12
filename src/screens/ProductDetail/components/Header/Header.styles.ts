@@ -1,13 +1,17 @@
 import {StyleSheet} from 'react-native';
-import {COLORS} from '../../../assets/colors';
+import {COLORS} from '../../../../assets/colors';
 
 export default StyleSheet.create({
   container: {
     paddingHorizontal: 20,
-    paddingBottom: 20,
+    paddingBottom: 18,
+    paddingTop: 18,
     backgroundColor: COLORS.SECONDARY,
   },
   content: {
     marginTop: 55,
+  },
+  statusBar: {
+    color: COLORS.SECONDARY,
   }
 });

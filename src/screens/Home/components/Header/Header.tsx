@@ -1,10 +1,10 @@
 import React from 'react';
 import {SafeAreaView, StatusBar, View} from 'react-native';
-import {COLORS} from '../../../assets/colors';
-import {Typography} from '../../../components';
-import styles from './Header.home.styles';
+import {COLORS} from '../../../../assets/colors';
+import {Typography} from '../../../../components';
+import styles from './Header.styles';
 
-export const HeaderHome = () => (
+export const Header = () => (
   <View style={styles.container}>
     <StatusBar barStyle="dark-content" backgroundColor={COLORS.BACKGROUND} />
     <SafeAreaView />

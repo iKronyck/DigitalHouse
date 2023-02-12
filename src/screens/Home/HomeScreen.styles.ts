@@ -4,6 +4,7 @@ import { COLORS } from '../../assets/colors';
 export default StyleSheet.create({
   container: {
     paddingHorizontal: 20,
+    justifyContent: 'center',
     backgroundColor: COLORS.BACKGROUND,
     flex: 1,
   },

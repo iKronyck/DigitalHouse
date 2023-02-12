@@ -7,3 +7,10 @@ export function getProducts<T>(): Promise<AxiosResponse<T> | undefined> {
     url: 'products',
   });
 }
+
+export function getProductsWithAPIError<T>(): Promise<AxiosResponse<T> | undefined> {
+  return dispatchRequest({
+    method: 'get',
+    url: 'test',
+  });
+}
