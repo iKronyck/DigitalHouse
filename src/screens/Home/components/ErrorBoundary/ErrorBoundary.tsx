@@ -2,14 +2,14 @@ import React from 'react';
 import {View} from 'react-native';
 import {Typography} from '../../../../components';
 import {AllButton} from '../AllButton';
-import {TErrorFallback} from './ErrorFallBack.types';
-import styles from './ErrorFallback.styles';
+import {TErrorBoundary} from './ErrorBoundary.types';
+import styles from './ErrorBoundary.styles';
 
-export const ErrorFallback = ({
+export const ErrorBoundary = ({
   error,
   resetErrorBoundary,
   children,
-}: TErrorFallback) => {
+}: TErrorBoundary) => {
   if (error !== undefined) {
     return (
       <View style={styles.container}>

@@ -9,7 +9,7 @@ import {
   PointsCard,
   ProductsContainer,
   Header,
-  ErrorFallback,
+  ErrorBoundary,
 } from './components';
 import {THomeScreen} from './HomeScreen.types';
 import {ERouterRoutes} from '../../routes/models/router.model';
@@ -37,7 +37,7 @@ export const HomeScreen = ({navigation}: THomeScreen) => {
     <>
       <Header />
       <View style={styles.container}>
-        <ErrorFallback error={error} resetErrorBoundary={resetError}>
+        <ErrorBoundary error={error} resetErrorBoundary={resetError}>
           {loading ? (
             <ActivityIndicator
               testID="home-screen-loading"
@@ -84,7 +84,7 @@ export const HomeScreen = ({navigation}: THomeScreen) => {
               </View>
             </>
           )}
-        </ErrorFallback>
+        </ErrorBoundary>
       </View>
     </>
   );

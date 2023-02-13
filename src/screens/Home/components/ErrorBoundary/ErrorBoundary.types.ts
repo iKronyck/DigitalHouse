@@ -1,6 +1,6 @@
-import {ReactElement, ReactNode} from 'react';
+import {ReactElement} from 'react';
 
-export type TErrorFallback = {
+export type TErrorBoundary = {
   error: unknown;
   resetErrorBoundary: () => void;
   children: ReactElement;
