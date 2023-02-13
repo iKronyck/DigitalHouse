@@ -60,7 +60,7 @@ React Native Challenge
 │  │  │  │  points.adapter.ts
 │  │  │  └───components
 │  │  │  │  └───AllButton
-│  │  │  │  └───Error
+│  │  │  │  └───ErrorBoundary
 │  │  │  │  └───Header
 │  │  │  │  └───PointsCard
 │  │  │  │  └───ProductItem
