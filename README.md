@@ -157,3 +157,5 @@ npx react-native run-ios
 ```bash
 npm run test
 ```
+
+![Screen-Recording-2023-02-12-at-2 (1)](https://user-images.githubusercontent.com/12678606/218382668-efdc04f4-7af2-4f36-bc92-8df21c31f0ad.gif)
